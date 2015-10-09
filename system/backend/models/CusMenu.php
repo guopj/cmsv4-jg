@@ -15,7 +15,10 @@ use yii\helpers\ArrayHelper;
  
 class CusMenu extends \yii\db\ActiveRecord
 {
-	public static function getMenu(){
+    /**
+     * @return array
+     */
+    public static function getMenu(){
 		$retArr = [
 			'site'  =>  [
 							'label' => '站点',
@@ -74,7 +77,7 @@ class CusMenu extends \yii\db\ActiveRecord
 			$retArr[$key]['set'] = 0;
 			if(!empty($val['child'])){
 				foreach($val['child'] as $keyb=>$valb){
-					if(is_int(strpos($now_url,$valb['url']))){
+					if($valb['url']==$now_url){
 						$retArr[$key]['child'][$keyb]['set'] = 1;
 						$retArr[$key]['set'] = 1;
 					}else{
